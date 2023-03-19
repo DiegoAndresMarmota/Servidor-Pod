@@ -5,10 +5,15 @@ const dbConnect = () => {
     mongoose.connect(DB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-    }, (err, res) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log("Connected to DB");
+    },
+        (err, res) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log("Connected to DB");
+            }
         }
-    }
+    );
+};
+
+module.exports = dbConnect;
