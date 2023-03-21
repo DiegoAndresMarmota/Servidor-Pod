@@ -6,7 +6,7 @@ const PodcastsScheme = new mongoose.Schema(
             type: String,
         },
         directory: {
-            type: Number,
+            type: String,
         },
         audio: {
             type: String,
