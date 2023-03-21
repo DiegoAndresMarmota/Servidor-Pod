@@ -1,11 +1,9 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
+const { getItems, getItem, createItem } = require("../controllers/podcasts");
 
-router.get('/', (req, res) => {
-    
-    const data = ["Hola Podcast"]
+router.get("/", getItems);
 
-    res.send({data})
-})
-    
+router.post("/", createItem);
+
 module.exports = router;
