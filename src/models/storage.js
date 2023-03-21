@@ -6,7 +6,7 @@ const StorageScheme = new mongoose.Schema(
             type: String,
         },
         filename: {
-            type: Number,
+            type: String,
         },
     },
     {
@@ -15,4 +15,4 @@ const StorageScheme = new mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model("storages", StorageScheme);
+module.exports = mongoose.model("storage", StorageScheme);
