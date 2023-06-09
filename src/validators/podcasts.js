@@ -1,4 +1,5 @@
 const { check } = require('express-validator');
+const validateSchemas = require('../utils/handleValidator');
 
 //Validar CreateItem en podcasts.controllers
 const validatorCreateItem = [
@@ -38,7 +39,10 @@ const validatorCreateItem = [
     check("media.id")
         .exists()
         .notEmpty()
-        .isMongoId()
+        .isMongoId(),
+    (req, res, next) => {
+        return validateSchemas(req, res, next);
+    }
 ];
 
 module.exports = { validatorCreateItem };
