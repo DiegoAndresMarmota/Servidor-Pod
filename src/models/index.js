@@ -1,6 +1,6 @@
 const models = {
-    userModel: require("./users"),
-    podcastModel: require("./podcasts"),
+    usersModel: require("./users"),
+    podcastsModel: require("./podcasts"),
     storageModel: require("./storage"),
 };
 
