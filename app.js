@@ -5,7 +5,9 @@ const app = express();
 const dbConnect = require("./src/config/mongo");
 
 app.use(cors());
+//Implementación de un middleware para poder recibir datos de tipo JSON
 app.use(express.json());
+//Implementación de un middleware para poder recibir datos públicos desde "storage" para obtener URL
 app.use(express.static("storage"));
 
 // const port = 3000;

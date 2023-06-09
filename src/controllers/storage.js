@@ -16,6 +16,7 @@ const getItem = (req, res) => {};
 const createItem = async (req, res) => {
     const { body, file } = req
     console.log(file);
+    //FileData extrae el nombre del archivo y la URL
     const fileData = {
         filename: file.filename,
         url:`${PUBLIC_URL}/${file.filename}`,
