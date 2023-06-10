@@ -8,7 +8,7 @@ const readerParams = (req, res, next) => {
             res.send({ error: "API_KEY no es correcta" });
         }
     } catch (err) {
-        res.status(401);
+        res.status(500);
         res.send({ error: "Error en el servidor" });
     }
 };
