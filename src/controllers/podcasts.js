@@ -1,3 +1,4 @@
+const { matchedData } = require('express-validator');
 const { podcastsModel } = require('../models');
 
 /**
@@ -30,8 +31,9 @@ const getItem = (req, res) => {};
  */
 const createItem = async (req, res) => {
     try {
-        const { body } = req;
-        const data = await podcastsModel.create(body);
+        //Validar los datos ingresar en el body
+        const validateBody = matchedData(req)
+        const data = await podcastsModel.create(validateBody);
         res.send({ data });
     } catch (error) {
         handleHttpError(res, "ERROR_NOT_CREATE_ITEM", 403);
