@@ -1,3 +1,4 @@
+const { matchedData } = require('express-validator');
 const { podcastsModel } = require('../models');
 
 /**
@@ -6,21 +7,54 @@ const { podcastsModel } = require('../models');
  * @param {*} res
  */
 const getItems = async (req, res) => {
-    const data = await podcastsModel.find({});
-    res.send({ data });
+    try {
+        const data = await podcastsModel.find({});
+        res.send({ data });
+    }catch(error) {
+        handleHttpError(res, "ERROR_NOT_FOUND", 401);
+    }
 };
 
-const getItem = (req, res) => { };
 
+/**
+ * Obtener lista para obtener un item
+ * @param {*} req
+ * @param {*} res
+ */
+const getItem = (req, res) => {};
+
+
+/**
+ * Crear un item
+ * @param {*} req
+ * @param {*} res
+ */
 const createItem = async (req, res) => {
-    const { body } = req;
-    console.log(body);
-    const data = await podcastsModel.create(body);
-    res.send({ data });
+    try {
+        //Validar los datos ingresar en el body
+        const validateBody = matchedData(req)
+        const data = await podcastsModel.create(validateBody);
+        res.send({ data });
+    } catch (error) {
+        handleHttpError(res, "ERROR_NOT_CREATE_ITEM", 403);
+    }
 };
 
+
+/**
+ * Actualizar un item
+ * @param {*} req
+ * @param {*} res
+ */
 const updateItem = (req, res) => { };
 
+
+/**
+ * Eliminar un item
+ * @param {*} req
+ * @param {*} res
+ */
 const deleteItem = (req, res) => {};
+
 
 module.exports = { getItems, getItem, createItem, updateItem, deleteItem };
