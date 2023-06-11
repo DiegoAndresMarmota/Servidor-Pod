@@ -1,8 +1,8 @@
 const { check } = require('express-validator');
 const validateSchemas = require('../utils/handleValidator');
 
-//Validar CreateItem en podcasts.controllers
-const validatorCreateItem = [
+//Validar CreatePodcast en podcasts.controllers
+const validatorCreatePodcast = [
     //Chequear campos {name, directory} del schema podcasts.models
     check("name")
         .exists()
@@ -45,4 +45,16 @@ const validatorCreateItem = [
     }
 ];
 
-module.exports = { validatorCreateItem };
+//Validar GetPodcast en podcasts.controllers
+const validatorGetPodcast= [
+    //Chequear campo media {id} del schema podcasts.models
+    check("id")
+        .exists()
+        .notEmpty()
+        .isMongoId(),
+    (req, res, next) => {
+        return validateSchemas(req, res, next);
+    }
+];
+
+module.exports = { validatorCreatePodcast, validatorGetPodcast };
