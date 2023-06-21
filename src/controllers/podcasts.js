@@ -76,7 +76,7 @@ const deletePodcast = async (req, res) => {
     try {
         req = matchedData(req);
         const { id } = req;
-        const data = await podcastsModel.deleteOne({_id:id});
+        const data = await podcastsModel.delete({_id:id});
         res.send({ data });
     } catch (error) {
         handleHttpError(res, "ERROR_NOT_DELETE_PODCAST", 404);
