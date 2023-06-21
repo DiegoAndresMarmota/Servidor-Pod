@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const mongooseDelete = require("mongoose-delete");
 
 const PodcastsScheme = new mongoose.Schema(
     {
@@ -47,4 +48,5 @@ const PodcastsScheme = new mongoose.Schema(
     }
 );
 
+PodcastsScheme.plugin(mongooseDelete, { overrideMethods: "all" });
 module.exports = mongoose.model("podcasts", PodcastsScheme);
